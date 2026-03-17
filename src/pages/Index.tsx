@@ -27,7 +27,7 @@ const faqs = [
 
 const Index = () => {
   const { region } = useRegion();
-  const currentTrees = region === "wales" ? walesIssueTrees : issueTrees;
+  const currentTrees = region === "scotland" ? scotlandIssueTrees : region === "wales" ? walesIssueTrees : issueTrees;
 
   return (
     <div className="min-h-screen bg-background">

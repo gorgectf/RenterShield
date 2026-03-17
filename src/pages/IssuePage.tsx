@@ -2,7 +2,8 @@ import { useState, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { issueTrees } from "@/data/issueTreeData";
 import { walesIssueTrees } from "@/data/walesIssueTreeData";
-import { useRegion } from "@/contexts/RegionContext";
+import { scotlandIssueTrees } from "@/data/scotlandIssueTreeData";
+import { useRegion, regionLabels } from "@/contexts/RegionContext";
 import { ArrowLeft, ArrowRight, Copy, Check, RotateCcw, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
 
@@ -10,7 +11,7 @@ export default function IssuePage() {
   const { issueId } = useParams<{ issueId: string }>();
   const { region } = useRegion();
 
-  const allTrees = region === "wales" ? walesIssueTrees : issueTrees;
+  const allTrees = region === "scotland" ? scotlandIssueTrees : region === "wales" ? walesIssueTrees : issueTrees;
   const tree = allTrees.find((t) => t.id === issueId);
 
   const [history, setHistory] = useState<string[]>([]);
