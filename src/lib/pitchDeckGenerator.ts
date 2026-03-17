@@ -386,7 +386,7 @@ export async function generateRenterShieldPitchDeck(outputPath = DEFAULT_PITCH_D
   addHeadline(slide, "MVP Plan", "The prototype already proves usability; the next step is stronger evidence and trust-building.");
   addPanel(slide, 0.72, 2.08, 3.85, 2.65, "Built in the sprint", "• Public no-login prototype\n• Interactive issue flows\n• Region-aware guidance\n• Template letters and legal references\n• Mobile-friendly experience", { fill: palette.surfaceAlt });
   addPanel(slide, 4.74, 2.08, 3.85, 2.65, "Riskiest assumptions", "• Renters will self-serve before calling a helpline\n• Template letters feel trustworthy enough to use\n• Users understand this is guidance, not legal advice\n• Some users will pay for workflow support", { fill: palette.surfaceAlt });
-  addPanel(slide, 8.76, 2.08, 3.82, 2.65, "What testing suggests so far", "• 3 renters completed the flow in under 2 minutes\n• Users responded most strongly to concrete next steps\n• Trust improves when legal references and disclaimers are visible\n• Clear next experiment: test with 10–15 more renters", { fill: palette.surfaceAlt });
+  addPanel(slide, 8.76, 2.08, 3.82, 2.65, "Renter feedback (temporary)", "TEMP", { fill: palette.surfaceAlt });
   addPanel(
     slide,
     0.72,
