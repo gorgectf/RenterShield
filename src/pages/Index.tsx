@@ -80,7 +80,7 @@ const Index = () => {
       <div className="bg-destructive/10 border-b border-destructive/20">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between gap-4 text-sm">
           <p className="text-foreground">
-            <strong>In immediate danger?</strong> Call <a href="tel:999" className="text-destructive font-bold">999</a>. For housing emergencies, call {region === "wales" ? "Shelter Cymru" : "Shelter"}: <a href={region === "wales" ? "tel:08004954959" : "tel:08088004444"} className="text-destructive font-bold">{region === "wales" ? "0800 495 495" : "0808 800 4444"}</a>
+            <strong>In immediate danger?</strong> Call <a href="tel:999" className="text-destructive font-bold">999</a>. For housing emergencies, call {region === "scotland" ? "Shelter Scotland" : region === "wales" ? "Shelter Cymru" : "Shelter"}: <a href={region === "wales" ? "tel:08004954959" : "tel:08088004444"} className="text-destructive font-bold">{region === "wales" ? "0800 495 495" : "0808 800 4444"}</a>
           </p>
           <Link to="/emergency" className="text-accent font-semibold flex-shrink-0 hover:underline">
             All contacts →
