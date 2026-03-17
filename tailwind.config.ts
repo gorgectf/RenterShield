@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['DM Sans', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -46,6 +50,17 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        slide: {
+          bg: "hsl(var(--slide-bg))",
+          "bg-light": "hsl(var(--slide-bg-light))",
+          accent: "hsl(var(--slide-accent))",
+          "accent-warm": "hsl(var(--slide-accent-warm))",
+          text: "hsl(var(--slide-text))",
+          "text-dark": "hsl(var(--slide-text-dark))",
+          muted: "hsl(var(--slide-muted))",
+          surface: "hsl(var(--slide-surface))",
+          highlight: "hsl(var(--slide-highlight))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
