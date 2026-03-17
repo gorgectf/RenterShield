@@ -62,11 +62,22 @@ const scotlandSupport: SupportContact[] = [
   { name: "Legal Aid (Scotland)", phone: null, website: "https://www.slab.org.uk", description: "Check if you qualify for free legal representation through the Scottish Legal Aid Board.", tags: ["Legal aid", "Court"] },
 ];
 
+const northernIrelandSupport: SupportContact[] = [
+  { name: "Housing Rights", phone: "028 9024 5640", website: "https://www.housingrights.org.uk", description: "Free housing advice for people in Northern Ireland on private renting, homelessness, repairs, debt, and eviction.", tags: ["Housing advice", "Private renting", "Legal help"] },
+  { name: "Northern Ireland Housing Executive", phone: null, website: "https://www.nihe.gov.uk", description: "Contact NIHE early if you are homeless, threatened with homelessness, or need emergency housing help.", tags: ["Homelessness", "Emergency housing"] },
+  { name: "Advice NI", phone: null, website: "https://www.adviceni.net", description: "Independent advice on benefits, debt, and practical support if housing issues affect your finances.", tags: ["Benefits", "Debt", "Advice"] },
+  { name: "Local Council Environmental Health", phone: null, website: "https://www.nidirect.gov.uk/contacts/local-councils-in-northern-ireland", description: "Report dangerous housing conditions, serious disrepair, or unsafe HMOs to your local council.", tags: ["Disrepair", "Hazards", "HMO"] },
+  { name: "nidirect Tenancy Deposit Information", phone: null, website: "https://www.nidirect.gov.uk/articles/tenancy-deposit-scheme-information-tenants", description: "Official guidance on tenancy deposit protection in Northern Ireland, including approved schemes and what landlords must do.", tags: ["Deposit protection", "Official guidance"] },
+  { name: "Local Council HMO Licensing", phone: null, website: "https://www.nidirect.gov.uk/articles/houses-multiple-occupation-hmos", description: "Check who licenses shared housing in your area and report suspected HMO licensing breaches.", tags: ["HMO", "Licensing", "Enforcement"] },
+  { name: "Samaritans", phone: "116 123", website: "https://www.samaritans.org", description: "Emotional support 24/7. Free to call from any phone.", tags: ["Mental health", "Crisis support"] },
+];
+
 export function getEmergencyContacts(_region: Region): EmergencyContact[] {
   return sharedEmergency;
 }
 
 export function getSupportContacts(region: Region): SupportContact[] {
+  if (region === "northern-ireland") return northernIrelandSupport;
   if (region === "scotland") return scotlandSupport;
   if (region === "wales") return walesSupport;
   return englandSupport;
