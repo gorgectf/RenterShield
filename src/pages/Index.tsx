@@ -58,21 +58,7 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Pitch deck links */}
-        <section className="mt-16 mb-16 flex flex-wrap items-center justify-center gap-4">
-          <Link
-            to="/pitch"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-display font-semibold hover:opacity-90 transition-opacity"
-          >
-            <Presentation size={18} /> View Pitch Deck
-          </Link>
-          <button
-            onClick={downloadPitchDeck}
-            className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-xl font-display font-semibold hover:opacity-90 transition-opacity"
-          >
-            <Download size={18} /> Download .pptx
-          </button>
-        </section>
+        <div className="mb-16" />
       </main>
 
       {/* Footer */}

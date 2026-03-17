@@ -18,7 +18,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/pitch" element={<PitchDeck />} />
+          
           <Route path="/issue/:issueId" element={<IssuePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
