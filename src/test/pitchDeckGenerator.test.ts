@@ -1,4 +1,4 @@
-import { existsSync, statSync } from "fs";
+import { existsSync, statSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { DEFAULT_PITCH_DECK_OUTPUT, generateRenterShieldPitchDeck } from "@/lib/pitchDeckGenerator";
 

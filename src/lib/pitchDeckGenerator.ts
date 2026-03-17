@@ -180,11 +180,9 @@ export async function generateRenterShieldPitchDeck(outputPath = DEFAULT_PITCH_D
   pptx.company = "RenterShield";
   pptx.subject = deckTitle;
   pptx.title = deckTitle;
-  pptx.lang = "en-GB";
   pptx.theme = {
     headFontFace: "Aptos Display",
     bodyFontFace: "Aptos",
-    lang: "en-GB",
   };
 
   let slide = pptx.addSlide();
