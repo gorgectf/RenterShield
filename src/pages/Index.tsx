@@ -1,16 +1,25 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Link } from "react-router-dom";
+import { Shield, Presentation } from "lucide-react";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="min-h-screen flex flex-col items-center justify-center bg-background px-6">
+      <div className="w-20 h-20 rounded-2xl bg-accent flex items-center justify-center mb-8">
+        <Shield size={40} className="text-accent-foreground" />
+      </div>
+      <h1 className="font-display text-4xl font-bold text-foreground tracking-tight">RenterShield</h1>
+      <p className="text-muted-foreground mt-3 text-center max-w-md">
+        Know your rights. Take action. Protect your home.
+      </p>
+      <Link
+        to="/pitch"
+        className="mt-10 inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 rounded-xl font-display font-semibold text-lg hover:opacity-90 transition-opacity"
+      >
+        <Presentation size={22} />
+        View Pitch Deck
+      </Link>
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
