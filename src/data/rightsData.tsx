@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Home, Shield, Banknote, Scale, BookOpen, Users, Wrench, FileCheck } from "lucide-react";
+import { Home, Shield, Banknote, Scale, BookOpen, Users, Wrench, FileCheck, ClipboardList } from "lucide-react";
 import type { Region } from "@/contexts/RegionContext";
 
 export interface RightItem {
