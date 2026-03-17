@@ -111,12 +111,67 @@ const walesRights: RightItem[] = [
   },
 ];
 
+const scotlandRights: RightItem[] = [
+  {
+    icon: <Home className="w-6 h-6" />,
+    title: "Right to a Safe Home",
+    summary: "Your landlord must ensure the property meets the 'repairing standard' — covering structure, installations, fixtures, furnishings, and freedom from damp.",
+    law: "Housing (Scotland) Act 2006, Sections 13-14",
+  },
+  {
+    icon: <Shield className="w-6 h-6" />,
+    title: "No 'No-Fault' Eviction (PRT)",
+    summary: "Under a Private Residential Tenancy, there is no no-fault eviction. Your landlord must prove one of 18 specific grounds and get a Tribunal order.",
+    law: "Private Housing (Tenancies) (Scotland) Act 2016, Part 5",
+  },
+  {
+    icon: <Banknote className="w-6 h-6" />,
+    title: "Deposit Protection",
+    summary: "Your deposit must be protected in an approved scheme within 30 working days. If not, the Tribunal can award up to 3x the deposit amount.",
+    law: "Tenancy Deposit Schemes (Scotland) Regulations 2011",
+  },
+  {
+    icon: <Scale className="w-6 h-6" />,
+    title: "Fair Rent Increases",
+    summary: "Rent can only be increased once per year with 3 months' notice (PRT). You can refer excessive increases to Rent Service Scotland.",
+    law: "Private Housing (Tenancies) (Scotland) Act 2016, Sections 22-25",
+  },
+  {
+    icon: <ClipboardList className="w-6 h-6" />,
+    title: "Landlord Registration",
+    summary: "All private landlords in Scotland must be registered on the Scottish Landlord Register. Unregistered landlords face prosecution.",
+    law: "Antisocial Behaviour etc. (Scotland) Act 2004, Part 8",
+  },
+  {
+    icon: <Users className="w-6 h-6" />,
+    title: "Quiet Enjoyment",
+    summary: "You have the right to live without interference. Your landlord must give reasonable notice before visiting and needs your consent to enter.",
+    law: "Common law; Housing (Scotland) Act 1988",
+  },
+  {
+    icon: <Wrench className="w-6 h-6" />,
+    title: "Right to Repairs (Tribunal Route)",
+    summary: "You can apply directly to the First-tier Tribunal for a Repairing Standard Enforcement Order if your landlord won't fix repairs. Applications are free.",
+    law: "Housing (Scotland) Act 2006, Sections 22-26",
+  },
+  {
+    icon: <Shield className="w-6 h-6" />,
+    title: "Interlinked Fire Alarms",
+    summary: "All rented properties in Scotland must have interlinked fire alarms (smoke alarms in living rooms and hallways, heat detectors in kitchens).",
+    law: "Housing (Scotland) Act 2014; Fire Safety (Scotland) Regulations",
+  },
+];
+
 export function getRights(region: Region): RightItem[] {
-  return region === "wales" ? walesRights : englandRights;
+  if (region === "scotland") return scotlandRights;
+  if (region === "wales") return walesRights;
+  return englandRights;
 }
 
 export function getRightsDescription(region: Region): string {
-  return region === "wales"
-    ? "As a private renter in Wales, you have significant legal protections under the Renting Homes (Wales) Act 2016. Understanding these rights is the first step to defending them."
-    : "As a private renter in England, you have significant legal protections. Understanding these rights is the first step to defending them.";
+  if (region === "scotland")
+    return "As a private renter in Scotland, you have strong legal protections — including no 'no-fault' evictions under the Private Housing (Tenancies) (Scotland) Act 2016. Understanding these rights is the first step to defending them.";
+  if (region === "wales")
+    return "As a private renter in Wales, you have significant legal protections under the Renting Homes (Wales) Act 2016. Understanding these rights is the first step to defending them.";
+  return "As a private renter in England, you have significant legal protections. Understanding these rights is the first step to defending them.";
 }

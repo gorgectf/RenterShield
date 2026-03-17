@@ -51,10 +51,23 @@ const walesSupport: SupportContact[] = [
   { name: "Legal Aid", phone: null, website: "https://www.gov.uk/legal-aid", description: "Check if you qualify for free legal representation.", tags: ["Legal aid", "Court"] },
 ];
 
+const scotlandSupport: SupportContact[] = [
+  { name: "Shelter Scotland", phone: "0808 800 4444", website: "https://www.shelterscotland.org", description: "Free housing advice for people in Scotland. Helpline open Mon-Fri 9am-5pm.", tags: ["Housing advice", "Homelessness", "Legal help"] },
+  { name: "Citizens Advice Scotland", phone: "0800 028 1456", website: "https://www.cas.org.uk", description: "Free, confidential advice on housing, benefits, debt, and legal issues in Scotland.", tags: ["Benefits", "Legal rights", "Debt"] },
+  { name: "Scottish Landlord Register", phone: null, website: "https://www.landlordregistrationscotland.gov.uk", description: "Check if your landlord is registered. Report unregistered landlords to your local council.", tags: ["Landlord registration", "Enforcement"] },
+  { name: "First-tier Tribunal (Housing)", phone: null, website: "https://www.housingandpropertychamber.scot", description: "Apply for repair orders, deposit disputes, eviction challenges, and rent increase referrals. Applications are free.", tags: ["Tribunal", "Repairs", "Disputes"] },
+  { name: "Rent Service Scotland", phone: null, website: "https://www.rentservice.gov.scot", description: "Refer rent increases for assessment. A Rent Officer will determine the open market rent.", tags: ["Rent increases", "Valuation"] },
+  { name: "Samaritans", phone: "116 123", website: "https://www.samaritans.org", description: "Emotional support 24/7. Free to call from any phone.", tags: ["Mental health", "Crisis support"] },
+  { name: "Scottish Women's Aid", phone: "0800 027 1234", website: "https://womensaid.scot", description: "Support for domestic abuse in Scotland. 24-hour helpline.", tags: ["Domestic abuse", "Safety"] },
+  { name: "Legal Aid (Scotland)", phone: null, website: "https://www.slab.org.uk", description: "Check if you qualify for free legal representation through the Scottish Legal Aid Board.", tags: ["Legal aid", "Court"] },
+];
+
 export function getEmergencyContacts(_region: Region): EmergencyContact[] {
   return sharedEmergency;
 }
 
 export function getSupportContacts(region: Region): SupportContact[] {
-  return region === "wales" ? walesSupport : englandSupport;
+  if (region === "scotland") return scotlandSupport;
+  if (region === "wales") return walesSupport;
+  return englandSupport;
 }
