@@ -297,18 +297,18 @@ export async function generateRenterShieldPitchDeck(outputPath = DEFAULT_PITCH_D
 
   slide = pptx.addSlide();
   addSlideChrome(slide, 4);
-  addHeadline(slide, "Market Potential", "Large market, but the near-term opportunity is a focused self-serve wedge.");
+  addHeadline(slide, "Market Opportunity", "Big category, but the first wedge is a specific renter segment with a clearer path to revenue.");
   addPanel(slide, 0.72, 2.12, 3.9, 1.7, "TAM", "£2.1B\nUK housing-related legal support and adjacent consumer legal services.");
-  addPanel(slide, 4.72, 2.12, 3.9, 1.7, "SAM", "£340M\nSelf-serve tools and digital guidance for private renters with legal or tenancy problems.");
-  addPanel(slide, 8.72, 2.12, 3.9, 1.7, "SOM", "~£840k ARR\nIllustrative first wedge: 5,000 premium users at £14/month after initial traction and iteration.");
+  addPanel(slide, 4.72, 2.12, 3.9, 1.7, "SAM", "£340M\nDigitally delivered guidance and workflow support for private renters facing deposit, repairs, eviction, or rent disputes.");
+  addPanel(slide, 8.72, 2.12, 3.9, 1.7, "SOM", "~£840k ARR\nIllustrative first wedge: 5,000 paying users at £14/month after winning a narrow, high-intent segment.");
   addPanel(
     slide,
     0.72,
     4.15,
     7.0,
     1.7,
-    "Why this version is more credible",
-    "The original deck’s first-year SOM was ambitious. This revised framing keeps the same market logic but uses a smaller, more believable obtainable target that is easier to defend in front of judges.",
+    "Initial wedge to win first",
+    "Start with students and young professionals in private rentals: digitally native renters, high search intent, limited legal confidence, and strong need for fast self-serve support.",
     { fill: palette.surfaceAlt }
   );
   addPanel(
@@ -317,8 +317,8 @@ export async function generateRenterShieldPitchDeck(outputPath = DEFAULT_PITCH_D
     4.15,
     4.63,
     1.7,
-    "Source base",
-    "English Housing Survey, Shelter reporting, and legal services market data can support the top-down story. Keep appendix notes handy for verbal Q&A.",
+    "Research to cite",
+    "Support the story with English Housing Survey data, tenancy deposit dispute volumes, Shelter reporting, and UK private renter population figures.",
   );
 
   slide = pptx.addSlide();
@@ -340,18 +340,18 @@ export async function generateRenterShieldPitchDeck(outputPath = DEFAULT_PITCH_D
 
   slide = pptx.addSlide();
   addSlideChrome(slide, 6);
-  addHeadline(slide, "Business Model", "Free guidance builds trust; paid workflow tools unlock monetisation once urgency and complexity increase.");
+  addHeadline(slide, "Business Model", "The end user is broad, but the first paying customers are renters in high-stress disputes and B2B pilot partners.");
   addPanel(slide, 0.72, 2.1, 4.0, 2.35, "Free core", "Decision-tree guidance, rights information, emergency contacts, and basic template letters remain free to maximise reach and trust.");
-  addPanel(slide, 4.92, 2.1, 4.0, 2.35, "Premium tier (£14/month)", "AI-assisted letter drafting, deadline tracking, evidence logging, and a landlord communication timeline for high-stakes or ongoing cases.");
-  addPanel(slide, 9.12, 2.1, 3.46, 2.35, "B2B / pilot path", "Housing associations, student housing teams, councils, or advice services that want a self-serve triage layer.");
+  addPanel(slide, 4.92, 2.1, 4.0, 2.35, "Premium renter plan (£14/month)", "AI-assisted letter drafting, deadline tracking, evidence logging, and a landlord communication timeline for urgent or ongoing disputes.");
+  addPanel(slide, 9.12, 2.1, 3.46, 2.35, "Institutional buyer path", "University housing teams, student unions, councils, or advice organisations that want a self-serve triage layer before 1:1 support.");
   addPanel(
     slide,
     0.72,
     4.72,
     5.85,
     1.2,
-    "Conversion trigger",
-    "Users are most likely to pay when their issue is time-sensitive, evidence-heavy, or emotionally draining.",
+    "Who pays first",
+    "Likely early payer: renters with time-sensitive, evidence-heavy issues such as deposits, repairs escalation, or eviction pressure.",
     { fill: palette.surfaceAlt }
   );
   addPanel(
@@ -360,33 +360,33 @@ export async function generateRenterShieldPitchDeck(outputPath = DEFAULT_PITCH_D
     4.72,
     5.76,
     1.2,
-    "What to say if challenged",
-    "Premium is not 'pay for rights' — it is pay for organisation, drafting support, reminders, and confidence during stressful disputes.",
+    "How to explain monetisation",
+    "Users do not pay for rights information; they pay for speed, structure, drafting support, and confidence during stressful cases.",
   );
 
   slide = pptx.addSlide();
   addSlideChrome(slide, 7);
-  addHeadline(slide, "Go-to-Market", "Start where renters already ask for help, then layer in trust and referrals.");
-  addPanel(slide, 0.72, 2.08, 3.9, 2.45, "1. Communities", "Reddit, MoneySavingExpert, tenant forums, and student housing groups. Answer real questions and direct users to the tool when relevant.");
-  addPanel(slide, 4.72, 2.08, 3.9, 2.45, "2. Content + SEO", "Target high-intent searches like 'landlord won’t return deposit' or 'how long to fix damp'. Publish pages that convert into guided flows.");
-  addPanel(slide, 8.72, 2.08, 3.9, 2.45, "3. Pilot conversations", "Approach charities, unions, university housing teams, and local support organisations with a lightweight self-serve pilot.");
+  addHeadline(slide, "Go-to-Market", "Market to one renter segment first, prove trust there, then expand to adjacent users and organisations.");
+  addPanel(slide, 0.72, 2.08, 3.9, 2.45, "1. Young renter channels", "Student housing groups, Reddit, MoneySavingExpert, tenant forums, and university communities where renters already share urgent problems.");
+  addPanel(slide, 4.72, 2.08, 3.9, 2.45, "2. High-intent SEO", "Target searches like 'landlord won’t return deposit' and 'how long to fix damp' with pages that convert readers into guided flows.");
+  addPanel(slide, 8.72, 2.08, 3.9, 2.45, "3. Pilot buyers", "Approach university housing teams, tenant unions, councils, and advice services with a lightweight self-serve pilot.");
   addPanel(
     slide,
     0.72,
     4.88,
     11.9,
     0.95,
-    "Important correction from the feedback",
-    "Do not imply formal partnerships with Shelter or Citizens Advice unless they already exist. Frame this as pilot exploration, not confirmed distribution.",
+    "Messaging discipline",
+    "Be explicit: the core user is the renter, and the first paying customer is either a renter in a premium moment or an organisation buying triage capacity.",
     { fill: palette.surfaceAlt, titleColor: palette.warm }
   );
 
   slide = pptx.addSlide();
   addSlideChrome(slide, 8);
-  addHeadline(slide, "MVP Plan", "The prototype already proves usability; the next step is stronger evidence and trust-building.");
+  addHeadline(slide, "MVP Plan", "The prototype proves usability; next validation should focus on trust, willingness to pay, and the best first segment.");
   addPanel(slide, 0.72, 2.08, 3.85, 2.65, "Built in the sprint", "• Public no-login prototype\n• Interactive issue flows\n• Region-aware guidance\n• Template letters and legal references\n• Mobile-friendly experience", { fill: palette.surfaceAlt });
-  addPanel(slide, 4.74, 2.08, 3.85, 2.65, "Riskiest assumptions", "• Renters will self-serve before calling a helpline\n• Template letters feel trustworthy enough to use\n• Users understand this is guidance, not legal advice\n• Some users will pay for workflow support", { fill: palette.surfaceAlt });
-  addPanel(slide, 8.76, 2.08, 3.82, 2.65, "Renter feedback (temporary)", "TEMP", { fill: palette.surfaceAlt });
+  addPanel(slide, 4.74, 2.08, 3.85, 2.65, "Riskiest assumptions", "• Renters will self-serve before calling a helpline\n• Users trust the outputs enough to act\n• Students and young professionals are the easiest wedge to acquire first\n• Some users will pay for workflow support", { fill: palette.surfaceAlt });
+  addPanel(slide, 8.76, 2.08, 3.82, 2.65, "Renter feedback (temporary)", "TEMP — Add 3–5 renter quotes showing whether users trusted the guidance, understood the disclaimer, and would pay for drafting, reminders, or evidence tracking in stressful disputes.", { fill: palette.surfaceAlt });
   addPanel(
     slide,
     0.72,
@@ -394,7 +394,7 @@ export async function generateRenterShieldPitchDeck(outputPath = DEFAULT_PITCH_D
     11.9,
     0.9,
     "Most important learning",
-    "This is strongest when positioned as a confidence and action tool, not a generic legal information site.",
+    "This is strongest when framed as a renter action tool with a narrow first segment and clear premium moments — not a general legal information site.",
   );
 
   slide = pptx.addSlide();
