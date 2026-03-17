@@ -1,81 +1,14 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Phone, Globe, ExternalLink, AlertTriangle } from "lucide-react";
-
-const emergencyContacts = [
-  {
-    name: "Police / Fire / Ambulance",
-    phone: "999",
-    description: "For life-threatening emergencies, immediate danger, or crimes in progress.",
-    urgent: true,
-  },
-  {
-    name: "Gas Emergency",
-    phone: "0800 111 999",
-    description: "If you smell gas or suspect a gas leak. Available 24/7, free to call.",
-    urgent: true,
-  },
-];
-
-const supportContacts = [
-  {
-    name: "Shelter",
-    phone: "0808 800 4444",
-    website: "https://www.shelter.org.uk",
-    description: "Free housing advice and support. Helpline open Mon-Fri 8am-8pm, Sat-Sun 9am-5pm.",
-    tags: ["Housing advice", "Homelessness", "Legal help"],
-  },
-  {
-    name: "Citizens Advice",
-    phone: "0800 144 8848",
-    website: "https://www.citizensadvice.org.uk",
-    description: "Free, confidential advice on housing, benefits, debt, and legal issues.",
-    tags: ["Benefits", "Legal rights", "Debt"],
-  },
-  {
-    name: "Samaritans",
-    phone: "116 123",
-    website: "https://www.samaritans.org",
-    description: "Emotional support 24/7. Free to call from any phone.",
-    tags: ["Mental health", "Crisis support"],
-  },
-  {
-    name: "National Domestic Abuse Helpline",
-    phone: "0808 2000 247",
-    website: "https://www.nationaldahelpline.org.uk",
-    description: "24-hour support for domestic abuse, including from landlords or housemates.",
-    tags: ["Domestic abuse", "Safety"],
-  },
-  {
-    name: "Electrical Safety First",
-    phone: null,
-    website: "https://www.electricalsafetyfirst.org.uk",
-    description: "Report electrical safety concerns in rented properties.",
-    tags: ["Electrical safety"],
-  },
-  {
-    name: "Environmental Health (Local Council)",
-    phone: null,
-    website: "https://www.gov.uk/find-local-council",
-    description: "Report housing hazards, disrepair, or HMO issues. Search for your local council to find their Environmental Health team.",
-    tags: ["Disrepair", "Hazards", "HMO"],
-  },
-  {
-    name: "Legal Aid",
-    phone: null,
-    website: "https://www.gov.uk/legal-aid",
-    description: "Check if you qualify for free legal representation for housing cases.",
-    tags: ["Legal aid", "Court"],
-  },
-  {
-    name: "Acas (Employment)",
-    phone: "0300 123 1100",
-    website: "https://www.acas.org.uk",
-    description: "If housing issues are linked to employment (e.g. tied accommodation).",
-    tags: ["Employment", "Tied housing"],
-  },
-];
+import { ArrowLeft, Phone, Globe, AlertTriangle } from "lucide-react";
+import { useRegion, regionLabels } from "@/contexts/RegionContext";
+import { RegionSelector } from "@/components/RegionSelector";
+import { getEmergencyContacts, getSupportContacts } from "@/data/emergencyData";
 
 export default function EmergencyPage() {
+  const { region } = useRegion();
+  const emergencyContacts = getEmergencyContacts(region);
+  const supportContacts = getSupportContacts(region);
+
   return (
     <div className="min-h-screen bg-background">
       <header className="border-b border-border bg-card">
@@ -83,10 +16,11 @@ export default function EmergencyPage() {
           <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
             <ArrowLeft size={20} />
           </Link>
-          <div>
+          <div className="flex-1">
             <h1 className="font-display font-bold text-foreground text-lg">Emergency & Support Contacts</h1>
-            <p className="text-muted-foreground text-sm">Who to call when you need help now</p>
+            <p className="text-muted-foreground text-sm">Who to call when you need help in {regionLabels[region]}</p>
           </div>
+          <RegionSelector />
         </div>
       </header>
 

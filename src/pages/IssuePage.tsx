@@ -1,12 +1,18 @@
 import { useState, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { issueTrees } from "@/data/issueTreeData";
+import { walesIssueTrees } from "@/data/walesIssueTreeData";
+import { useRegion } from "@/contexts/RegionContext";
 import { ArrowLeft, ArrowRight, Copy, Check, RotateCcw, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
 
 export default function IssuePage() {
   const { issueId } = useParams<{ issueId: string }>();
-  const tree = issueTrees.find((t) => t.id === issueId);
+  const { region } = useRegion();
+
+  const allTrees = region === "wales" ? walesIssueTrees : issueTrees;
+  const tree = allTrees.find((t) => t.id === issueId);
+
   const [history, setHistory] = useState<string[]>([]);
   const [currentNodeId, setCurrentNodeId] = useState(tree?.startNodeId ?? "");
   const [copied, setCopied] = useState(false);
@@ -66,6 +72,9 @@ export default function IssuePage() {
               <h1 className="font-display font-bold text-foreground text-lg">{tree.title}</h1>
             </div>
           </div>
+          <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full font-medium">
+            {region === "wales" ? "Wales" : "England"}
+          </span>
           <button onClick={restart} className="text-muted-foreground hover:text-foreground transition-colors" title="Start over">
             <RotateCcw size={18} />
           </button>
@@ -168,8 +177,8 @@ export default function IssuePage() {
       <footer className="border-t border-border mt-16 py-6">
         <div className="max-w-3xl mx-auto px-4 flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
           <p>RenterShield is for guidance only — not legal advice.</p>
-          <a href="https://www.shelter.org.uk" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-foreground transition-colors">
-            Need urgent help? Contact Shelter <ExternalLink size={14} />
+          <a href={region === "wales" ? "https://www.sheltercymru.org.uk" : "https://www.shelter.org.uk"} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-foreground transition-colors">
+            Need urgent help? Contact {region === "wales" ? "Shelter Cymru" : "Shelter"} <ExternalLink size={14} />
           </a>
         </div>
       </footer>
