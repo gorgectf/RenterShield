@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Shield, Presentation } from "lucide-react";
+import { Shield, Presentation, Download } from "lucide-react";
+import { downloadPitchDeck } from "@/lib/generatePptx";
 
 const Index = () => {
   return (
@@ -11,13 +12,22 @@ const Index = () => {
       <p className="text-muted-foreground mt-3 text-center max-w-md">
         Know your rights. Take action. Protect your home.
       </p>
-      <Link
-        to="/pitch"
-        className="mt-10 inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 rounded-xl font-display font-semibold text-lg hover:opacity-90 transition-opacity"
-      >
-        <Presentation size={22} />
-        View Pitch Deck
-      </Link>
+      <div className="flex gap-4 mt-10">
+        <Link
+          to="/pitch"
+          className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 rounded-xl font-display font-semibold text-lg hover:opacity-90 transition-opacity"
+        >
+          <Presentation size={22} />
+          View Pitch Deck
+        </Link>
+        <button
+          onClick={downloadPitchDeck}
+          className="inline-flex items-center gap-3 bg-accent text-accent-foreground px-8 py-4 rounded-xl font-display font-semibold text-lg hover:opacity-90 transition-opacity"
+        >
+          <Download size={22} />
+          Download .pptx
+        </button>
+      </div>
     </div>
   );
 };
