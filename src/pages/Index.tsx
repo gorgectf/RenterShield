@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Shield, ArrowRight, Phone, Scale, HelpCircle, ExternalLink } from "lucide-react";
 import { issueTrees } from "@/data/issueTreeData";
 import { walesIssueTrees } from "@/data/walesIssueTreeData";
+import { scotlandIssueTrees } from "@/data/scotlandIssueTreeData";
 import { useRegion } from "@/contexts/RegionContext";
 import { RegionSelector } from "@/components/RegionSelector";
 
