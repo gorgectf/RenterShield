@@ -187,7 +187,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-border mt-8 pt-6 text-center text-xs text-muted-foreground">
-            <p>RenterShield provides guidance based on tenancy law for England and Wales. This is not legal advice.</p>
+            <p>RenterShield provides guidance based on tenancy law for England, Wales, and Scotland. This is not legal advice.</p>
           </div>
         </div>
       </footer>
