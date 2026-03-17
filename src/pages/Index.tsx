@@ -161,7 +161,7 @@ const Index = () => {
             <div>
               <h4 className="font-display font-bold text-foreground mb-3">RenterShield</h4>
               <p className="text-muted-foreground leading-relaxed">
-                Free legal guidance for private renters in England and Wales. Know your rights, take action.
+                Free legal guidance for private renters in England, Wales, and Scotland. Know your rights, take action.
               </p>
             </div>
             <div>
