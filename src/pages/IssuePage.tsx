@@ -2,7 +2,8 @@ import { useState, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { issueTrees } from "@/data/issueTreeData";
 import { walesIssueTrees } from "@/data/walesIssueTreeData";
-import { useRegion } from "@/contexts/RegionContext";
+import { scotlandIssueTrees } from "@/data/scotlandIssueTreeData";
+import { useRegion, regionLabels } from "@/contexts/RegionContext";
 import { ArrowLeft, ArrowRight, Copy, Check, RotateCcw, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
 
@@ -10,7 +11,7 @@ export default function IssuePage() {
   const { issueId } = useParams<{ issueId: string }>();
   const { region } = useRegion();
 
-  const allTrees = region === "wales" ? walesIssueTrees : issueTrees;
+  const allTrees = region === "scotland" ? scotlandIssueTrees : region === "wales" ? walesIssueTrees : issueTrees;
   const tree = allTrees.find((t) => t.id === issueId);
 
   const [history, setHistory] = useState<string[]>([]);
@@ -177,8 +178,8 @@ export default function IssuePage() {
       <footer className="border-t border-border mt-16 py-6">
         <div className="max-w-3xl mx-auto px-4 flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
           <p>RenterShield is for guidance only — not legal advice.</p>
-          <a href={region === "wales" ? "https://www.sheltercymru.org.uk" : "https://www.shelter.org.uk"} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-foreground transition-colors">
-            Need urgent help? Contact {region === "wales" ? "Shelter Cymru" : "Shelter"} <ExternalLink size={14} />
+          <a href={region === "scotland" ? "https://www.shelterscotland.org" : region === "wales" ? "https://www.sheltercymru.org.uk" : "https://www.shelter.org.uk"} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-foreground transition-colors">
+            Need urgent help? Contact {region === "scotland" ? "Shelter Scotland" : region === "wales" ? "Shelter Cymru" : "Shelter"} <ExternalLink size={14} />
           </a>
         </div>
       </footer>

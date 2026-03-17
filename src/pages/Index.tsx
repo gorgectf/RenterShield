@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Shield, ArrowRight, Phone, Scale, HelpCircle, ExternalLink } from "lucide-react";
 import { issueTrees } from "@/data/issueTreeData";
 import { walesIssueTrees } from "@/data/walesIssueTreeData";
+import { scotlandIssueTrees } from "@/data/scotlandIssueTreeData";
 import { useRegion } from "@/contexts/RegionContext";
 import { RegionSelector } from "@/components/RegionSelector";
 
@@ -26,7 +27,7 @@ const faqs = [
 
 const Index = () => {
   const { region } = useRegion();
-  const currentTrees = region === "wales" ? walesIssueTrees : issueTrees;
+  const currentTrees = region === "scotland" ? scotlandIssueTrees : region === "wales" ? walesIssueTrees : issueTrees;
 
   return (
     <div className="min-h-screen bg-background">
@@ -79,7 +80,7 @@ const Index = () => {
       <div className="bg-destructive/10 border-b border-destructive/20">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between gap-4 text-sm">
           <p className="text-foreground">
-            <strong>In immediate danger?</strong> Call <a href="tel:999" className="text-destructive font-bold">999</a>. For housing emergencies, call {region === "wales" ? "Shelter Cymru" : "Shelter"}: <a href={region === "wales" ? "tel:08004954959" : "tel:08088004444"} className="text-destructive font-bold">{region === "wales" ? "0800 495 495" : "0808 800 4444"}</a>
+            <strong>In immediate danger?</strong> Call <a href="tel:999" className="text-destructive font-bold">999</a>. For housing emergencies, call {region === "scotland" ? "Shelter Scotland" : region === "wales" ? "Shelter Cymru" : "Shelter"}: <a href={region === "wales" ? "tel:08004954959" : "tel:08088004444"} className="text-destructive font-bold">{region === "wales" ? "0800 495 495" : "0808 800 4444"}</a>
           </p>
           <Link to="/emergency" className="text-accent font-semibold flex-shrink-0 hover:underline">
             All contacts →
@@ -160,7 +161,7 @@ const Index = () => {
             <div>
               <h4 className="font-display font-bold text-foreground mb-3">RenterShield</h4>
               <p className="text-muted-foreground leading-relaxed">
-                Free legal guidance for private renters in England and Wales. Know your rights, take action.
+                Free legal guidance for private renters in England, Wales, and Scotland. Know your rights, take action.
               </p>
             </div>
             <div>
@@ -173,8 +174,8 @@ const Index = () => {
             <div>
               <h4 className="font-display font-bold text-foreground mb-3">External Help</h4>
               <div className="flex flex-col gap-2">
-                <a href={region === "wales" ? "https://www.sheltercymru.org.uk" : "https://www.shelter.org.uk"} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1">
-                  {region === "wales" ? "Shelter Cymru" : "Shelter"} <ExternalLink size={12} />
+                <a href={region === "scotland" ? "https://www.shelterscotland.org" : region === "wales" ? "https://www.sheltercymru.org.uk" : "https://www.shelter.org.uk"} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1">
+                  {region === "scotland" ? "Shelter Scotland" : region === "wales" ? "Shelter Cymru" : "Shelter"} <ExternalLink size={12} />
                 </a>
                 <a href="https://www.citizensadvice.org.uk" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1">
                   Citizens Advice <ExternalLink size={12} />
@@ -186,7 +187,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-border mt-8 pt-6 text-center text-xs text-muted-foreground">
-            <p>RenterShield provides guidance based on tenancy law for England and Wales. This is not legal advice.</p>
+            <p>RenterShield provides guidance based on tenancy law for England, Wales, and Scotland. This is not legal advice.</p>
           </div>
         </div>
       </footer>
