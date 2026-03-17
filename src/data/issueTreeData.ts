@@ -592,4 +592,469 @@ Yours sincerely,
       },
     },
   },
+  {
+    id: "rent-increase",
+    title: "Unfair Rent Increase",
+    description: "Your landlord wants to raise the rent and you're not sure if it's fair or legal",
+    icon: "📈",
+    startNodeId: "ri1",
+    nodes: {
+      ri1: {
+        id: "ri1",
+        question: "Are you still in your fixed-term tenancy (e.g. a 12-month contract)?",
+        info: "During a fixed term, your landlord generally cannot increase the rent unless there's a rent review clause in your contract.",
+        options: [
+          { label: "Yes, I'm still in my fixed term", nextId: "ri_fixed" },
+          { label: "No, I'm on a rolling/periodic tenancy", nextId: "ri2" },
+          { label: "I'm not sure", nextId: "ri_check_term" },
+        ],
+      },
+      ri_fixed: {
+        id: "ri_fixed",
+        question: "Does your tenancy agreement contain a rent review clause?",
+        info: "A rent review clause allows the landlord to increase rent during the fixed term according to specific terms.",
+        options: [
+          { label: "Yes, there is a rent review clause", nextId: "ri_review_clause" },
+          { label: "No rent review clause", nextId: "ri_fixed_no_clause" },
+          { label: "I'm not sure", nextId: "ri_check_agreement" },
+        ],
+      },
+      ri_fixed_no_clause: {
+        id: "ri_fixed_no_clause",
+        result: {
+          title: "Your landlord cannot increase rent during a fixed term without a clause",
+          summary: "Without a rent review clause in your tenancy agreement, your landlord cannot legally increase your rent until the fixed term ends.",
+          steps: [
+            "Check your tenancy agreement to confirm there is no rent review clause",
+            "Write to your landlord explaining the rent cannot be increased during the fixed term",
+            "If they insist, contact Citizens Advice or Shelter for support",
+            "Do NOT pay the higher amount — continue paying your agreed rent",
+            "Keep records of all rent payments made",
+          ],
+          letterTemplate: `Dear [Landlord Name],
+
+Re: Proposed rent increase — [Property Address]
+
+I am writing regarding your proposed rent increase from £[Current Rent] to £[Proposed Rent].
+
+My tenancy agreement is a fixed-term contract running until [End Date]. There is no rent review clause in the agreement, which means the rent cannot be increased during this period.
+
+I will continue to pay the agreed rent of £[Current Rent] as per our contract. Any increase can only be discussed when the fixed term ends.
+
+Yours sincerely,
+[Your Name]
+[Date]`,
+          legalRef: "Housing Act 1988; common law of contract",
+        },
+      },
+      ri_review_clause: {
+        id: "ri_review_clause",
+        result: {
+          title: "Check if the rent review clause is being followed correctly",
+          summary: "If your agreement has a rent review clause, the landlord must follow its exact terms — including notice periods and how the new rent is calculated.",
+          steps: [
+            "Read the rent review clause carefully — note the notice period and method of calculation",
+            "Check that your landlord has followed the clause exactly",
+            "If the process wasn't followed correctly, the increase may not be enforceable",
+            "Compare the proposed rent with similar local properties on Rightmove or Zoopla",
+            "If you believe the increase is excessive, you can challenge it at a First-tier Tribunal",
+          ],
+          legalRef: "Housing Act 1988, Section 13",
+        },
+      },
+      ri_check_term: {
+        id: "ri_check_term",
+        result: {
+          title: "Check your tenancy status first",
+          summary: "You need to know if you're in a fixed term or on a periodic (rolling) tenancy, as this changes your landlord's options for increasing rent.",
+          steps: [
+            "Find your original tenancy agreement and check the start and end dates",
+            "If the end date has passed and you haven't signed a new agreement, you're likely on a periodic tenancy",
+            "If you're still within the dates, you're in a fixed term",
+            "Come back to RenterShield once you know your tenancy status",
+          ],
+          legalRef: "Housing Act 1988",
+        },
+      },
+      ri_check_agreement: {
+        id: "ri_check_agreement",
+        result: {
+          title: "Check your tenancy agreement for a rent review clause",
+          summary: "Look through your tenancy agreement for any section titled 'rent review', 'rent increase', or 'variation of rent'.",
+          steps: [
+            "Search your tenancy agreement for terms like 'rent review', 'increase', or 'variation'",
+            "If found, note the exact wording — especially notice periods and how the new rent is calculated",
+            "If no such clause exists, your landlord cannot increase rent during the fixed term",
+            "Come back to RenterShield once you've checked",
+          ],
+          legalRef: "Housing Act 1988",
+        },
+      },
+      ri2: {
+        id: "ri2",
+        question: "How is your landlord trying to increase the rent?",
+        options: [
+          { label: "Section 13 notice (formal form)", nextId: "ri_s13" },
+          { label: "Just told me verbally or by text", nextId: "ri_informal" },
+          { label: "New tenancy agreement with higher rent", nextId: "ri_new_agreement" },
+        ],
+      },
+      ri_s13: {
+        id: "ri_s13",
+        question: "Do you think the proposed rent is above the market rate for your area?",
+        info: "You can challenge a Section 13 increase at the First-tier Tribunal if it's above market rate. The Tribunal can only reduce the rent, never increase it above the proposed amount.",
+        options: [
+          { label: "Yes, it seems too high", nextId: "ri_s13_challenge" },
+          { label: "No, it seems fair for the area", nextId: "ri_s13_fair" },
+          { label: "I'm not sure", nextId: "ri_s13_check" },
+        ],
+      },
+      ri_s13_challenge: {
+        id: "ri_s13_challenge",
+        result: {
+          title: "Challenge the rent increase at the First-tier Tribunal",
+          summary: "You can apply to the First-tier Tribunal (Property Chamber) to challenge a Section 13 rent increase. The Tribunal will set the rent at market rate — it can only reduce the proposed rent, never increase it.",
+          steps: [
+            "You must apply BEFORE the proposed increase takes effect",
+            "Research comparable rents in your area using Rightmove, Zoopla, or OpenRent",
+            "Print or screenshot evidence of similar properties at lower rents",
+            "Apply to the First-tier Tribunal (Property Chamber) — the application is free",
+            "The Tribunal will assess the market rent and set a fair amount",
+            "Important: the Tribunal cannot increase the rent above the proposed amount",
+            "Continue paying your current rent until the Tribunal makes a decision",
+          ],
+          legalRef: "Housing Act 1988, Section 13; First-tier Tribunal (Property Chamber)",
+        },
+      },
+      ri_s13_fair: {
+        id: "ri_s13_fair",
+        result: {
+          title: "The Section 13 increase appears fair",
+          summary: "If the proposed rent is at or below market rate, challenging it at a Tribunal is unlikely to succeed. However, you can still try to negotiate.",
+          steps: [
+            "Consider negotiating a smaller increase or a phased increase with your landlord",
+            "Check if your income qualifies you for Housing Benefit or Universal Credit housing costs",
+            "If the increase causes genuine hardship, explain this to your landlord in writing",
+            "Look into Discretionary Housing Payments from your council for short-term help",
+            "The new rent takes effect on the date stated in the Section 13 notice",
+          ],
+          legalRef: "Housing Act 1988, Section 13",
+        },
+      },
+      ri_s13_check: {
+        id: "ri_s13_check",
+        result: {
+          title: "Research the market rate before deciding",
+          summary: "Before accepting or challenging the increase, find out what similar properties rent for in your area.",
+          steps: [
+            "Search Rightmove, Zoopla, and OpenRent for similar properties in your area",
+            "Match by: number of bedrooms, property type, condition, and location",
+            "Look at 'to let' prices, not sold prices",
+            "Check at least 5-10 comparable properties",
+            "If the proposed rent is above the average, consider challenging at the Tribunal",
+            "If it's in line with the market, consider negotiating a smaller increase",
+          ],
+          legalRef: "Housing Act 1988, Section 13",
+        },
+      },
+      ri_informal: {
+        id: "ri_informal",
+        result: {
+          title: "An informal rent increase is not legally binding",
+          summary: "For a periodic tenancy, your landlord must use a Section 13 notice or you must agree to the increase. A verbal demand is not enforceable.",
+          steps: [
+            "You are NOT obliged to pay an increased rent without a proper Section 13 notice",
+            "Continue paying your current agreed rent",
+            "Write to your landlord explaining that any increase must follow the legal process",
+            "If they serve a Section 13 notice, you then have the right to challenge it at the Tribunal",
+            "Do NOT agree verbally — any agreement should be in writing",
+            "Contact Shelter if your landlord pressures or threatens you",
+          ],
+          letterTemplate: `Dear [Landlord Name],
+
+Re: Proposed rent increase — [Property Address]
+
+Thank you for your message regarding a rent increase. However, for a periodic assured shorthold tenancy, any rent increase must be made using the proper legal procedure — specifically a Section 13 notice under the Housing Act 1988.
+
+Until I receive a valid Section 13 notice, I will continue to pay the currently agreed rent of £[Current Rent].
+
+Yours sincerely,
+[Your Name]
+[Date]`,
+          legalRef: "Housing Act 1988, Section 13",
+        },
+      },
+      ri_new_agreement: {
+        id: "ri_new_agreement",
+        result: {
+          title: "You don't have to sign a new agreement with a higher rent",
+          summary: "Your landlord cannot force you to sign a new tenancy agreement. If your fixed term has ended, you automatically continue on a periodic tenancy at the same rent.",
+          steps: [
+            "You are NOT obliged to sign a new agreement",
+            "Your tenancy continues on a periodic basis at the same rent when the fixed term ends",
+            "If you do want to sign, negotiate the terms — including the rent amount",
+            "If you don't sign, the landlord must use a Section 13 notice to increase rent",
+            "Never sign under pressure — take time to read and consider any new agreement",
+          ],
+          legalRef: "Housing Act 1988, Section 5",
+        },
+      },
+    },
+  },
+  {
+    id: "harassment",
+    title: "Landlord Harassment",
+    description: "Your landlord is intimidating, threatening, or interfering with your home",
+    icon: "🚨",
+    startNodeId: "h1",
+    nodes: {
+      h1: {
+        id: "h1",
+        question: "What kind of behaviour is your landlord engaging in?",
+        info: "Landlord harassment is a criminal offence. It includes any behaviour designed to force you out or interfere with your right to live peacefully.",
+        options: [
+          { label: "Entering without permission", nextId: "h_entry" },
+          { label: "Threats, intimidation, or abuse", nextId: "h_threats" },
+          { label: "Cutting off utilities or changing locks", nextId: "h_utilities" },
+          { label: "Constant unwanted contact or visits", nextId: "h_contact" },
+        ],
+      },
+      h_entry: {
+        id: "h_entry",
+        result: {
+          title: "Your landlord must give 24 hours' notice and get your permission",
+          summary: "Your landlord has no automatic right to enter your home. They must give at least 24 hours' written notice and can only enter at a reasonable time with your consent (except in genuine emergencies).",
+          steps: [
+            "Tell your landlord in writing that they must give 24 hours' notice before visiting",
+            "You can refuse entry if proper notice isn't given — it's your right",
+            "Keep a log of every unauthorised entry: date, time, what happened",
+            "If they enter without permission, this could be trespass or harassment",
+            "If it continues, report it to the police (non-emergency: 101)",
+            "Contact your local council's tenancy relations officer",
+          ],
+          letterTemplate: `Dear [Landlord Name],
+
+Re: Unauthorised entry — [Property Address]
+
+I am writing because you have entered the property without giving proper notice on [date(s)].
+
+Under common law and the terms of my tenancy, you are required to give at least 24 hours' written notice before any visit, and you may only enter at a reasonable time with my consent.
+
+Entry without permission constitutes trespass and may amount to harassment under the Protection from Eviction Act 1977.
+
+Please ensure all future visits are arranged with proper notice. I am happy to accommodate reasonable access requests.
+
+Yours sincerely,
+[Your Name]
+[Date]`,
+          legalRef: "Protection from Eviction Act 1977; Landlord and Tenant Act 1985",
+        },
+      },
+      h_threats: {
+        id: "h_threats",
+        result: {
+          title: "Threats and intimidation are criminal offences",
+          summary: "If your landlord is threatening, abusing, or intimidating you, this is a criminal offence under the Protection from Eviction Act 1977. You should report this immediately.",
+          steps: [
+            "Keep a detailed log of every incident: date, time, what was said, any witnesses",
+            "Save all texts, emails, voicemails, and letters as evidence",
+            "If you feel in immediate danger, call the police on 999",
+            "For non-emergencies, report to the police on 101",
+            "Contact your local council's Tenancy Relations Officer — they can prosecute",
+            "Call Shelter's emergency line: 0808 800 4444",
+            "Consider applying for a non-molestation order or injunction through the court",
+          ],
+          legalRef: "Protection from Eviction Act 1977, Section 1; Criminal Justice and Public Order Act 1994",
+        },
+      },
+      h_utilities: {
+        id: "h_utilities",
+        result: {
+          title: "Cutting off utilities or changing locks is ILLEGAL",
+          summary: "If your landlord cuts off gas, electricity, water, or changes the locks to force you out, this is illegal eviction — a criminal offence. Call the police and your council immediately.",
+          steps: [
+            "This is a criminal offence — call the police on 999 if locked out",
+            "Contact your local council's emergency housing team immediately",
+            "The council's Tenancy Relations Officer can take criminal action against your landlord",
+            "Document everything: photos of changed locks, utility meters, timestamps",
+            "If locked out, do NOT break back in — get council/police assistance",
+            "You may be entitled to emergency accommodation from the council",
+            "You can claim compensation for illegal eviction through the county court",
+          ],
+          legalRef: "Protection from Eviction Act 1977, Sections 1 and 3",
+        },
+      },
+      h_contact: {
+        id: "h_contact",
+        result: {
+          title: "Excessive contact can amount to harassment",
+          summary: "If your landlord is contacting you excessively, visiting unannounced, or making your life difficult to pressure you to leave, this is harassment and is illegal.",
+          steps: [
+            "Send a written request asking them to limit contact to reasonable matters only",
+            "Keep a log of every unwanted visit, call, text, or message with dates and times",
+            "Set clear boundaries: specify preferred contact methods and reasonable hours",
+            "If the behaviour continues, report to your local council's Tenancy Relations Officer",
+            "You can also report persistent harassment to the police",
+            "Consider seeking an injunction through the county court if necessary",
+          ],
+          letterTemplate: `Dear [Landlord Name],
+
+Re: Excessive contact and visits — [Property Address]
+
+I am writing to request that you reduce the frequency of your visits and contact regarding the above property.
+
+I have logged [number] visits/contacts in the past [time period], which I consider excessive and unreasonable. This behaviour is causing me distress and may constitute harassment under the Protection from Eviction Act 1977.
+
+Going forward, please limit contact to genuine tenancy matters and provide at least 24 hours' written notice before any visit. My preferred contact method is [email/post].
+
+If this behaviour continues, I will report the matter to the local council's Tenancy Relations Officer.
+
+Yours sincerely,
+[Your Name]
+[Date]`,
+          legalRef: "Protection from Eviction Act 1977; Protection from Harassment Act 1997",
+        },
+      },
+    },
+  },
+  {
+    id: "hmo",
+    title: "HMO & Licensing Issues",
+    description: "Problems with shared housing, overcrowding, or unlicensed properties",
+    icon: "🏠",
+    startNodeId: "hmo1",
+    nodes: {
+      hmo1: {
+        id: "hmo1",
+        question: "How many people from different households share your property?",
+        info: "A House in Multiple Occupation (HMO) is a property shared by 3 or more tenants from 2 or more households. Large HMOs (5+ people) need a mandatory licence.",
+        options: [
+          { label: "3-4 people from different households", nextId: "hmo_small" },
+          { label: "5 or more people from different households", nextId: "hmo_large" },
+          { label: "I live alone or with family only", nextId: "hmo_not" },
+        ],
+      },
+      hmo_not: {
+        id: "hmo_not",
+        result: {
+          title: "Your property probably isn't an HMO",
+          summary: "If you live alone or only with family members, your property is unlikely to be classified as an HMO. However, you may still have other issues we can help with.",
+          steps: [
+            "Go back to the homepage and select the issue that best matches your situation",
+            "If you're unsure about your tenancy type, contact Citizens Advice",
+          ],
+          legalRef: "Housing Act 2004, Section 254",
+        },
+      },
+      hmo_small: {
+        id: "hmo_small",
+        question: "What issue are you experiencing?",
+        options: [
+          { label: "Fire safety concerns", nextId: "hmo_fire" },
+          { label: "Overcrowding", nextId: "hmo_overcrowding" },
+          { label: "I think it should be licensed but isn't", nextId: "hmo_licence_check" },
+        ],
+      },
+      hmo_large: {
+        id: "hmo_large",
+        question: "Is the property licensed as an HMO?",
+        info: "Properties with 5+ occupants from 2+ households MUST have a mandatory HMO licence. Operating without one is a criminal offence.",
+        options: [
+          { label: "Yes, it's licensed", nextId: "hmo_licensed_issues" },
+          { label: "No, or I don't know", nextId: "hmo_unlicensed" },
+        ],
+      },
+      hmo_unlicensed: {
+        id: "hmo_unlicensed",
+        result: {
+          title: "Your HMO may be unlicensed — you could claim up to 12 months' rent back",
+          summary: "If your landlord is operating a licensable HMO without a licence, they are committing a criminal offence. You may be entitled to a Rent Repayment Order of up to 12 months' rent.",
+          steps: [
+            "Check with your local council whether the property has an HMO licence",
+            "You can search your council's public HMO licence register online",
+            "If unlicensed, the landlord faces an unlimited fine",
+            "Apply to the First-tier Tribunal for a Rent Repayment Order (up to 12 months' rent)",
+            "The landlord also CANNOT use a Section 21 notice while operating without a licence",
+            "Report the unlicensed HMO to your local council's housing team",
+            "Contact Shelter for help with the Rent Repayment Order application",
+          ],
+          legalRef: "Housing Act 2004, Sections 72, 73, 96; Housing and Planning Act 2016",
+        },
+      },
+      hmo_licensed_issues: {
+        id: "hmo_licensed_issues",
+        question: "What issue are you experiencing?",
+        options: [
+          { label: "Fire safety concerns", nextId: "hmo_fire" },
+          { label: "Overcrowding", nextId: "hmo_overcrowding" },
+          { label: "Licence conditions not being met", nextId: "hmo_conditions" },
+        ],
+      },
+      hmo_fire: {
+        id: "hmo_fire",
+        result: {
+          title: "Fire safety in HMOs — your landlord has strict obligations",
+          summary: "HMOs must meet enhanced fire safety standards including fire doors, alarms, and escape routes. Failures can be reported to the council and fire service.",
+          steps: [
+            "Check for working smoke alarms on every floor and heat detectors in kitchens",
+            "Fire doors should be fitted to all bedrooms and kitchens (30-minute rated)",
+            "Escape routes must be clear and well-lit at all times",
+            "Fire extinguishers or fire blankets should be provided in communal areas",
+            "If any of these are missing, report to your local council's housing team",
+            "You can also contact your local fire service for a free safety inspection",
+            "In immediate danger? Call 999",
+          ],
+          legalRef: "Housing Act 2004; Management of Houses in Multiple Occupation (England) Regulations 2006; Regulatory Reform (Fire Safety) Order 2005",
+        },
+      },
+      hmo_overcrowding: {
+        id: "hmo_overcrowding",
+        result: {
+          title: "Overcrowding in your HMO",
+          summary: "HMO licences specify the maximum number of occupants. If the property is overcrowded, the landlord is breaching their licence conditions.",
+          steps: [
+            "Check the HMO licence (should be displayed in the property) for the max occupancy",
+            "Count the actual number of occupants — include everyone living there",
+            "Minimum room sizes: 10.22m² for 2 adults, 6.51m² for 1 adult",
+            "If overcrowded, report to your local council's housing enforcement team",
+            "The council can prosecute the landlord and impose fines up to £30,000",
+            "You may also be able to claim a Rent Repayment Order",
+          ],
+          legalRef: "Housing Act 2004, Section 67; Licensing of Houses in Multiple Occupation (Mandatory Conditions of Licences) (England) Regulations 2018",
+        },
+      },
+      hmo_conditions: {
+        id: "hmo_conditions",
+        result: {
+          title: "Licence conditions not being met",
+          summary: "HMO licences come with mandatory conditions. If your landlord isn't meeting them, report this to the council — it can lead to prosecution or licence revocation.",
+          steps: [
+            "Request a copy of the HMO licence from your landlord (they must display it)",
+            "Common mandatory conditions include: annual gas safety checks, working smoke alarms, adequate waste disposal, and maximum occupancy limits",
+            "Document which conditions are not being met with photos and dates",
+            "Report breaches to your local council's housing team",
+            "The council can prosecute, fine, or revoke the licence",
+            "If the licence is revoked, you may be entitled to a Rent Repayment Order",
+          ],
+          legalRef: "Housing Act 2004, Sections 67, 72; Schedule 4",
+        },
+      },
+      hmo_licence_check: {
+        id: "hmo_licence_check",
+        result: {
+          title: "Check if your property needs an HMO licence",
+          summary: "Some councils operate additional licensing schemes that cover smaller HMOs (3-4 people). Check with your local council.",
+          steps: [
+            "Search your council's website for 'additional HMO licensing' or 'selective licensing'",
+            "Many councils require licences for all HMOs, not just those with 5+ people",
+            "Contact your council's private sector housing team to check",
+            "If a licence is required but not held, the landlord faces criminal prosecution",
+            "You may be entitled to a Rent Repayment Order of up to 12 months' rent",
+            "The landlord cannot serve a valid Section 21 notice without a required licence",
+          ],
+          legalRef: "Housing Act 2004, Sections 56, 72; Housing and Planning Act 2016",
+        },
+      },
+    },
+  },
 ];
