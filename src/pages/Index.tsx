@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Shield, ArrowRight } from "lucide-react";
 import { issueTrees } from "@/data/issueTreeData";
-import { downloadPitchDeck } from "@/lib/generatePptx";
+
 
 const Index = () => {
   return (
