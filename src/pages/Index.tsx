@@ -174,8 +174,8 @@ const Index = () => {
             <div>
               <h4 className="font-display font-bold text-foreground mb-3">External Help</h4>
               <div className="flex flex-col gap-2">
-                <a href={region === "wales" ? "https://www.sheltercymru.org.uk" : "https://www.shelter.org.uk"} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1">
-                  {region === "wales" ? "Shelter Cymru" : "Shelter"} <ExternalLink size={12} />
+                <a href={region === "scotland" ? "https://www.shelterscotland.org" : region === "wales" ? "https://www.sheltercymru.org.uk" : "https://www.shelter.org.uk"} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1">
+                  {region === "scotland" ? "Shelter Scotland" : region === "wales" ? "Shelter Cymru" : "Shelter"} <ExternalLink size={12} />
                 </a>
                 <a href="https://www.citizensadvice.org.uk" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1">
                   Citizens Advice <ExternalLink size={12} />
