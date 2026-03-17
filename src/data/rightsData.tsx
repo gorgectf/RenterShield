@@ -162,13 +162,67 @@ const scotlandRights: RightItem[] = [
   },
 ];
 
+const northernIrelandRights: RightItem[] = [
+  {
+    icon: <Home className="w-6 h-6" />,
+    title: "Right to a Fit and Safe Home",
+    summary: "Private rented homes in Northern Ireland must meet minimum fitness and safety standards. Serious hazards and unsafe conditions can be reported to the local council.",
+    law: "Private Tenancies (Northern Ireland) Order 2006; Northern Ireland fitness standard rules",
+  },
+  {
+    icon: <Shield className="w-6 h-6" />,
+    title: "Protection from Illegal Eviction",
+    summary: "Your landlord cannot lawfully remove you by threat, lock change, or cutting services. Harassment and illegal eviction are criminal offences.",
+    law: "Protection from Eviction (Northern Ireland) Order 1978",
+  },
+  {
+    icon: <Banknote className="w-6 h-6" />,
+    title: "Deposit Protection",
+    summary: "A deposit must be protected in an approved tenancy deposit scheme within 28 days, and you should receive key information within 35 days. New deposits are generally capped at one month's rent.",
+    law: "Private Tenancies Act (Northern Ireland) 2022, Sections 4-6",
+  },
+  {
+    icon: <ClipboardList className="w-6 h-6" />,
+    title: "Notice to Quit Rules",
+    summary: "If your landlord wants possession, they usually need to serve a written Notice to Quit. The notice period depends on how long you have lived there.",
+    law: "Private Tenancies Act (Northern Ireland) 2022, Section 11; Private Tenancies (Northern Ireland) Order 2006",
+  },
+  {
+    icon: <Scale className="w-6 h-6" />,
+    title: "Rent Increase Limits",
+    summary: "Private rents in Northern Ireland can usually only be increased once every 12 months and require at least 2 months' written notice.",
+    law: "Private Tenancies Act (Northern Ireland) 2022, Section 7",
+  },
+  {
+    icon: <FileCheck className="w-6 h-6" />,
+    title: "Right to Tenancy Information",
+    summary: "Your landlord should give you key written tenancy information, and cash payments should be receipted. Keep all notices and tenancy paperwork safely.",
+    law: "Private Tenancies Act (Northern Ireland) 2022, Sections 1-3",
+  },
+  {
+    icon: <Wrench className="w-6 h-6" />,
+    title: "Right to Report Unsafe Repairs",
+    summary: "If the landlord ignores hazards or serious disrepair, you can escalate to the local council's Environmental Health team and get advice from Housing Rights.",
+    law: "Private Tenancies (Northern Ireland) Order 2006; Northern Ireland housing condition enforcement rules",
+  },
+  {
+    icon: <Users className="w-6 h-6" />,
+    title: "HMO Licensing Protections",
+    summary: "Shared homes that meet the HMO definition usually need a local council licence. Overcrowding, fire safety issues, and licence breaches can be reported.",
+    law: "Houses in Multiple Occupation Act (Northern Ireland) 2016",
+  },
+];
+
 export function getRights(region: Region): RightItem[] {
+  if (region === "northern-ireland") return northernIrelandRights;
   if (region === "scotland") return scotlandRights;
   if (region === "wales") return walesRights;
   return englandRights;
 }
 
 export function getRightsDescription(region: Region): string {
+  if (region === "northern-ireland")
+    return "As a private renter in Northern Ireland, you have important protections around notices to quit, deposit protection, rent increases, harassment, and minimum housing standards. Understanding these rights is the first step to defending them.";
   if (region === "scotland")
     return "As a private renter in Scotland, you have strong legal protections — including no 'no-fault' evictions under the Private Housing (Tenancies) (Scotland) Act 2016. Understanding these rights is the first step to defending them.";
   if (region === "wales")

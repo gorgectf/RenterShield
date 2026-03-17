@@ -1,14 +1,15 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
-export type Region = "england" | "wales" | "scotland";
+export type Region = "england" | "wales" | "scotland" | "northern-ireland";
 
 export const regionLabels: Record<Region, string> = {
   england: "England",
   wales: "Wales",
   scotland: "Scotland",
+  "northern-ireland": "Northern Ireland",
 };
 
-export const regions: Region[] = ["england", "wales", "scotland"];
+export const regions: Region[] = ["england", "wales", "scotland", "northern-ireland"];
 
 interface RegionContextType {
   region: Region;
@@ -23,7 +24,7 @@ const RegionContext = createContext<RegionContextType>({
 export function RegionProvider({ children }: { children: ReactNode }) {
   const [region, setRegion] = useState<Region>(() => {
     const saved = localStorage.getItem("rentershield-region");
-    if (saved === "wales" || saved === "scotland") return saved;
+    if (saved === "wales" || saved === "scotland" || saved === "northern-ireland") return saved;
     return "england";
   });
 
