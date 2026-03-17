@@ -1,5 +1,5 @@
-import { mkdirSync } from "fs";
-import { dirname, resolve } from "path";
+import { mkdirSync } from "node:fs";
+import { dirname, resolve } from "node:path";
 import PptxGenJS from "pptxgenjs";
 
 const palette = {
