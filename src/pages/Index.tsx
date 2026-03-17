@@ -3,7 +3,8 @@ import { Shield, ArrowRight, Phone, Scale, HelpCircle, ExternalLink } from "luci
 import { issueTrees } from "@/data/issueTreeData";
 import { walesIssueTrees } from "@/data/walesIssueTreeData";
 import { scotlandIssueTrees } from "@/data/scotlandIssueTreeData";
-import { useRegion } from "@/contexts/RegionContext";
+import { northernIrelandIssueTrees } from "@/data/northernIrelandIssueTreeData";
+import { useRegion, regionLabels } from "@/contexts/RegionContext";
 import { RegionSelector } from "@/components/RegionSelector";
 
 const faqs = [
@@ -13,35 +14,92 @@ const faqs = [
   },
   {
     q: "Is this legal advice?",
-    a: "No. RenterShield provides guidance based on tenancy law, but it is not a substitute for professional legal advice. For complex cases, contact Shelter or a solicitor.",
+    a: "No. RenterShield provides guidance based on tenancy law, but it is not a substitute for professional legal advice. For complex cases, contact the relevant housing advice service or a solicitor.",
   },
   {
     q: "Which regions are covered?",
-    a: "We currently cover England and Wales with region-specific legal guidance. Use the region selector to switch between them. Scotland and Northern Ireland coming soon.",
+    a: "We currently cover England, Wales, Scotland, and Northern Ireland with region-specific legal guidance. Use the region selector to switch between them.",
   },
   {
     q: "What if my landlord retaliates?",
-    a: "Retaliatory eviction is illegal. In England, the Deregulation Act 2015 protects you. In Wales, the Renting Homes (Wales) Act 2016 provides anti-retaliatory protections.",
+    a: "Retaliatory or unlawful eviction tactics can often be challenged. Use the region selector first so the guidance matches the tenancy law where you live.",
   },
 ];
 
 const Index = () => {
   const { region } = useRegion();
-  const currentTrees = region === "scotland" ? scotlandIssueTrees : region === "wales" ? walesIssueTrees : issueTrees;
-  const supportOrg = {
-    name: region === "scotland" ? "Shelter Scotland" : region === "wales" ? "Shelter Cymru" : "Shelter",
-    url: region === "scotland" ? "https://www.shelterscotland.org" : region === "wales" ? "https://www.sheltercymru.org.uk" : "https://www.shelter.org.uk",
-    phone: region === "wales" ? "0800 495 495" : "0808 800 4444",
-    phoneHref: region === "wales" ? "tel:08004954959" : "tel:08088004444",
-  };
-  const citizensAdvice = {
-    name: region === "scotland" ? "Citizens Advice Scotland" : region === "wales" ? "Citizens Advice Wales" : "Citizens Advice",
-    url: region === "scotland" ? "https://www.cas.org.uk" : region === "wales" ? "https://www.citizensadvice.org.uk/wales" : "https://www.citizensadvice.org.uk",
-  };
+  const currentTrees =
+    region === "northern-ireland"
+      ? northernIrelandIssueTrees
+      : region === "scotland"
+        ? scotlandIssueTrees
+        : region === "wales"
+          ? walesIssueTrees
+          : issueTrees;
+
+  const supportOrg =
+    region === "northern-ireland"
+      ? {
+          name: "Housing Rights",
+          url: "https://www.housingrights.org.uk",
+          phone: "028 9024 5640",
+          phoneHref: "tel:02890245640",
+        }
+      : region === "scotland"
+        ? {
+            name: "Shelter Scotland",
+            url: "https://www.shelterscotland.org",
+            phone: "0808 800 4444",
+            phoneHref: "tel:08088004444",
+          }
+        : region === "wales"
+          ? {
+              name: "Shelter Cymru",
+              url: "https://www.sheltercymru.org.uk",
+              phone: "0800 495 495",
+              phoneHref: "tel:08004954959",
+            }
+          : {
+              name: "Shelter",
+              url: "https://www.shelter.org.uk",
+              phone: "0808 800 4444",
+              phoneHref: "tel:08088004444",
+            };
+
+  const citizensAdvice =
+    region === "northern-ireland"
+      ? {
+          name: "Advice NI",
+          url: "https://www.adviceni.net",
+        }
+      : region === "scotland"
+        ? {
+            name: "Citizens Advice Scotland",
+            url: "https://www.cas.org.uk",
+          }
+        : region === "wales"
+          ? {
+              name: "Citizens Advice Wales",
+              url: "https://www.citizensadvice.org.uk/wales",
+            }
+          : {
+              name: "Citizens Advice",
+              url: "https://www.citizensadvice.org.uk",
+            };
+
+  const officialGuidance =
+    region === "northern-ireland"
+      ? {
+          name: "nidirect Renting",
+          url: "https://www.nidirect.gov.uk/articles/renting-home-privately",
+        }
+      : {
+          name: "GOV.UK Renting",
+          url: "https://www.gov.uk/private-renting",
+        };
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Nav */}
       <nav className="bg-primary text-primary-foreground border-b border-primary/80">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
@@ -59,7 +117,6 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Hero */}
       <header className="bg-primary text-primary-foreground">
         <div className="max-w-4xl mx-auto px-4 py-16 md:py-24 text-center">
           <div className="w-16 h-16 rounded-2xl bg-accent flex items-center justify-center mx-auto mb-6">
@@ -86,11 +143,10 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Emergency banner */}
       <div className="bg-destructive/10 border-b border-destructive/20">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between gap-4 text-sm">
           <p className="text-foreground">
-            <strong>In immediate danger?</strong> Call <a href="tel:999" className="text-destructive font-bold">999</a>. For housing emergencies in {region === "scotland" ? "Scotland" : region === "wales" ? "Wales" : "England"}, call {supportOrg.name}: <a href={supportOrg.phoneHref} className="text-destructive font-bold">{supportOrg.phone}</a>
+            <strong>In immediate danger?</strong> Call <a href="tel:999" className="text-destructive font-bold">999</a>. For housing emergencies in {regionLabels[region]}, call {supportOrg.name}: <a href={supportOrg.phoneHref} className="text-destructive font-bold">{supportOrg.phone}</a>
           </p>
           <Link to="/emergency" className="text-accent font-semibold flex-shrink-0 hover:underline">
             All contacts →
@@ -98,12 +154,10 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Issue cards */}
       <main className="max-w-4xl mx-auto px-4 py-12">
         <h2 className="font-display font-bold text-2xl text-foreground text-center mb-2">What's your issue?</h2>
         <p className="text-muted-foreground text-center mb-6">Select the problem you're facing and we'll guide you step by step.</p>
 
-        {/* Region selector */}
         <div className="flex justify-center mb-8">
           <RegionSelector />
         </div>
@@ -125,7 +179,6 @@ const Index = () => {
           ))}
         </div>
 
-        {/* How it works */}
         <section className="mt-20 text-center">
           <h2 className="font-display font-bold text-2xl text-foreground">How it works</h2>
           <div className="grid md:grid-cols-3 gap-8 mt-8">
@@ -145,7 +198,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* FAQ */}
         <section className="mt-20">
           <div className="flex items-center justify-center gap-2 mb-8">
             <HelpCircle className="text-accent" size={22} />
@@ -164,14 +216,13 @@ const Index = () => {
         <div className="mb-16" />
       </main>
 
-      {/* Footer */}
       <footer className="border-t border-border py-8 bg-card">
         <div className="max-w-4xl mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 text-sm">
             <div>
               <h4 className="font-display font-bold text-foreground mb-3">RenterShield</h4>
               <p className="text-muted-foreground leading-relaxed">
-                Free legal guidance for private renters in England, Wales, and Scotland. Know your rights, take action.
+                Free legal guidance for private renters across the UK. Know your rights, take action.
               </p>
             </div>
             <div>
@@ -190,14 +241,14 @@ const Index = () => {
                 <a href={citizensAdvice.url} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1">
                   {citizensAdvice.name} <ExternalLink size={12} />
                 </a>
-                <a href="https://www.gov.uk/private-renting" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1">
-                  GOV.UK Renting <ExternalLink size={12} />
+                <a href={officialGuidance.url} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1">
+                  {officialGuidance.name} <ExternalLink size={12} />
                 </a>
               </div>
             </div>
           </div>
           <div className="border-t border-border mt-8 pt-6 text-center text-xs text-muted-foreground">
-            <p>RenterShield provides guidance based on tenancy law for England, Wales, and Scotland. This is not legal advice.</p>
+            <p>RenterShield provides guidance based on tenancy law for England, Wales, Scotland, and Northern Ireland. This is not legal advice.</p>
           </div>
         </div>
       </footer>

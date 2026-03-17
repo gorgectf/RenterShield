@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { issueTrees } from "@/data/issueTreeData";
 import { walesIssueTrees } from "@/data/walesIssueTreeData";
 import { scotlandIssueTrees } from "@/data/scotlandIssueTreeData";
+import { northernIrelandIssueTrees } from "@/data/northernIrelandIssueTreeData";
 import { useRegion, regionLabels } from "@/contexts/RegionContext";
 import { ArrowLeft, ArrowRight, Copy, Check, RotateCcw, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
@@ -11,7 +12,15 @@ export default function IssuePage() {
   const { issueId } = useParams<{ issueId: string }>();
   const { region } = useRegion();
 
-  const allTrees = region === "scotland" ? scotlandIssueTrees : region === "wales" ? walesIssueTrees : issueTrees;
+  const allTrees =
+    region === "northern-ireland"
+      ? northernIrelandIssueTrees
+      : region === "scotland"
+        ? scotlandIssueTrees
+        : region === "wales"
+          ? walesIssueTrees
+          : issueTrees;
+
   const tree = allTrees.find((t) => t.id === issueId);
 
   const [history, setHistory] = useState<string[]>([]);
@@ -19,6 +28,15 @@ export default function IssuePage() {
   const [copied, setCopied] = useState(false);
 
   const node = tree?.nodes[currentNodeId];
+
+  const supportOrg =
+    region === "northern-ireland"
+      ? { name: "Housing Rights", url: "https://www.housingrights.org.uk" }
+      : region === "scotland"
+        ? { name: "Shelter Scotland", url: "https://www.shelterscotland.org" }
+        : region === "wales"
+          ? { name: "Shelter Cymru", url: "https://www.sheltercymru.org.uk" }
+          : { name: "Shelter", url: "https://www.shelter.org.uk" };
 
   const goTo = useCallback((nextId: string) => {
     setHistory((h) => [...h, currentNodeId]);
@@ -61,7 +79,6 @@ export default function IssuePage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <header className="border-b border-border bg-card">
         <div className="max-w-3xl mx-auto px-4 py-4 flex items-center gap-4">
           <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
@@ -80,14 +97,12 @@ export default function IssuePage() {
             <RotateCcw size={18} />
           </button>
         </div>
-        {/* Progress bar */}
         <div className="h-1 bg-muted">
           <div className="h-full bg-accent transition-all duration-500 ease-out" style={{ width: `${progress}%` }} />
         </div>
       </header>
 
       <main className="max-w-3xl mx-auto px-4 py-8">
-        {/* Question mode */}
         {node.question && (
           <div className="animate-in fade-in slide-in-from-right-4 duration-300">
             <h2 className="font-display font-bold text-2xl text-foreground leading-tight">
@@ -113,7 +128,6 @@ export default function IssuePage() {
           </div>
         )}
 
-        {/* Result mode */}
         {node.result && (
           <div className="animate-in fade-in slide-in-from-right-4 duration-300">
             <div className="bg-accent/10 border border-accent/20 rounded-2xl p-6 mb-8">
@@ -163,7 +177,6 @@ export default function IssuePage() {
           </div>
         )}
 
-        {/* Back button */}
         {history.length > 0 && (
           <button
             onClick={goBack}
@@ -174,12 +187,11 @@ export default function IssuePage() {
         )}
       </main>
 
-      {/* Footer */}
       <footer className="border-t border-border mt-16 py-6">
         <div className="max-w-3xl mx-auto px-4 flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
           <p>RenterShield provides guidance based on {regionLabels[region]} tenancy law. This is not legal advice.</p>
-          <a href={region === "scotland" ? "https://www.shelterscotland.org" : region === "wales" ? "https://www.sheltercymru.org.uk" : "https://www.shelter.org.uk"} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-foreground transition-colors">
-            Need urgent help in {regionLabels[region]}? Contact {region === "scotland" ? "Shelter Scotland" : region === "wales" ? "Shelter Cymru" : "Shelter"} <ExternalLink size={14} />
+          <a href={supportOrg.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-foreground transition-colors">
+            Need urgent help in {regionLabels[region]}? Contact {supportOrg.name} <ExternalLink size={14} />
           </a>
         </div>
       </footer>
