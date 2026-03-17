@@ -74,7 +74,7 @@ export default function IssuePage() {
             </div>
           </div>
           <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full font-medium">
-            {region === "wales" ? "Wales" : "England"}
+            {regionLabels[region]}
           </span>
           <button onClick={restart} className="text-muted-foreground hover:text-foreground transition-colors" title="Start over">
             <RotateCcw size={18} />
