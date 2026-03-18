@@ -86,7 +86,7 @@ function getClientIp(req: Request) {
       .map((ip) => ip.trim())
       .filter(Boolean);
     const trustedIp = forwardedIps.at(-1);
-+
+
     if (trustedIp) return trustedIp;
   }
 
