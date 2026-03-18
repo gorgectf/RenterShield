@@ -1,6 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { z } from "npm:zod@3.25.76";
-import { getLegalChatContext } from "../../../src/lib/legalChatKnowledge.ts";
+import { getLegalChatContext } from "../_shared/legalChatKnowledge.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
