@@ -242,10 +242,10 @@ export async function generateRenterShieldPitchDeck(outputPath = DEFAULT_PITCH_D
 
   slide = pptx.addSlide();
   addSlideChrome(slide, 2);
-  addHeadline(slide, "The Problem", "Renters hit legal problems fast — but the path to action is fragmented and intimidating.");
-  addMetric(slide, 0.72, "4.6M", "UK private renter households");
-  addMetric(slide, 4.18, "£700M+", "Estimated value tied up in unfair deposit disputes");
-  addMetric(slide, 7.64, "57%", "Renters who do not know how to challenge a landlord issue");
+  addHeadline(slide, "The Problem", "Renters face high costs and urgent disputes, but the path to action is fragmented and intimidating.");
+  addMetric(slide, 0.72, "4.9M", "Private rented homes in England & Wales (TDS 2024/25)");
+  addMetric(slide, 4.18, "£5.53B", "Protected deposit value in England & Wales (TDS 2024/25)");
+  addMetric(slide, 7.64, "32%", "Private renters spending half of income or more on rent (Shelter)");
   addPanel(
     slide,
     0.72,
@@ -253,7 +253,7 @@ export async function generateRenterShieldPitchDeck(outputPath = DEFAULT_PITCH_D
     7.7,
     2.35,
     "Why this matters now",
-    "People can usually find information somewhere — GOV.UK, Shelter, Citizens Advice, forums — but not in a form that quickly tells them what to do next in their exact situation. When the issue is urgent, legal jargon and fragmented guidance create delay, confusion, and avoidable losses.",
+    "Official and sector data point to the same problem: private renters face high housing costs, fast-moving disputes, and little confidence in what to do next. In England, renters aged 16–24 spend an average of 50% of income on rent, while 39% of private renters paid rent in advance as well as a deposit.",
   );
   addPanel(
     slide,
@@ -278,11 +278,12 @@ export async function generateRenterShieldPitchDeck(outputPath = DEFAULT_PITCH_D
       "Public, no-login, mobile-friendly prototype already live",
       "Guidance is specific to issue type and UK jurisdiction",
       "Designed to get a renter from uncertainty to action in under two minutes",
+      "Demo: https://rentershield.lovable.app",
     ],
     0.72,
     4.12,
     6.1,
-    1.5,
+    1.7,
   );
   addPanel(
     slide,
@@ -297,9 +298,9 @@ export async function generateRenterShieldPitchDeck(outputPath = DEFAULT_PITCH_D
 
   slide = pptx.addSlide();
   addSlideChrome(slide, 4);
-  addHeadline(slide, "Market Opportunity", "Big category, but the first wedge is a specific renter segment with a clearer path to revenue.");
-  addPanel(slide, 0.72, 2.12, 3.9, 1.7, "TAM", "£2.1B\nUK housing-related legal support and adjacent consumer legal services.");
-  addPanel(slide, 4.72, 2.12, 3.9, 1.7, "SAM", "£340M\nDigitally delivered guidance and workflow support for private renters facing deposit, repairs, eviction, or rent disputes.");
+  addHeadline(slide, "Market Opportunity", "A large renter need exists, but the first wedge is a narrow segment with a realistic path to revenue.");
+  addPanel(slide, 0.72, 2.12, 3.9, 1.7, "TAM", "~£790M annual spend\nIllustrative TAM using 4.706M protected deposits × £14/month for a workflow support subscription equivalent.");
+  addPanel(slide, 4.72, 2.12, 3.9, 1.7, "SAM", "~£95M annual spend\nAssume 12% of that market fits the first high-intent use case: digitally engaged renters facing disputes around deposits, repairs, eviction, or rent increases.");
   addPanel(slide, 8.72, 2.12, 3.9, 1.7, "SOM", "~£840k ARR\nIllustrative first wedge: 5,000 paying users at £14/month after winning a narrow, high-intent segment.");
   addPanel(
     slide,
@@ -308,7 +309,7 @@ export async function generateRenterShieldPitchDeck(outputPath = DEFAULT_PITCH_D
     7.0,
     1.7,
     "Initial wedge to win first",
-    "Start with students and young professionals in private rentals: digitally native renters, high search intent, limited legal confidence, and strong need for fast self-serve support.",
+    "Start with students and young professionals in private rentals: digitally native renters, high search intent, limited legal confidence, and high exposure to upfront rent and deposit pressure.",
     { fill: palette.surfaceAlt }
   );
   addPanel(
@@ -317,8 +318,8 @@ export async function generateRenterShieldPitchDeck(outputPath = DEFAULT_PITCH_D
     4.15,
     4.63,
     1.7,
-    "Research to cite",
-    "Support the story with English Housing Survey data, tenancy deposit dispute volumes, Shelter reporting, and UK private renter population figures.",
+    "Evidence behind the story",
+    "TDS 2024/25 reports 4.706M protected deposits worth £5.53B. GOV.UK English Housing Survey 2023-24 shows younger renters spend 50% of income on rent. Shelter reports 32% of private renters spend half their income or more on rent.",
   );
 
   slide = pptx.addSlide();
@@ -383,10 +384,10 @@ export async function generateRenterShieldPitchDeck(outputPath = DEFAULT_PITCH_D
 
   slide = pptx.addSlide();
   addSlideChrome(slide, 8);
-  addHeadline(slide, "MVP Plan", "The prototype proves usability; next validation should focus on trust, willingness to pay, and the best first segment.");
+  addHeadline(slide, "MVP Plan", "The prototype proves usability; the next validation layer is trust, willingness to pay, and repeatable acquisition.");
   addPanel(slide, 0.72, 2.08, 3.85, 2.65, "Built in the sprint", "• Public no-login prototype\n• Interactive issue flows\n• Region-aware guidance\n• Template letters and legal references\n• Mobile-friendly experience", { fill: palette.surfaceAlt });
   addPanel(slide, 4.74, 2.08, 3.85, 2.65, "Riskiest assumptions", "• Renters will self-serve before calling a helpline\n• Users trust the outputs enough to act\n• Students and young professionals are the easiest wedge to acquire first\n• Some users will pay for workflow support", { fill: palette.surfaceAlt });
-  addPanel(slide, 8.76, 2.08, 3.82, 2.65, "Renter feedback (temporary)", "TEMP — Add 3–5 renter quotes showing whether users trusted the guidance, understood the disclaimer, and would pay for drafting, reminders, or evidence tracking in stressful disputes.", { fill: palette.surfaceAlt });
+  addPanel(slide, 8.76, 2.08, 3.82, 2.65, "User testing and iteration", "• Young renters said the issue flows felt clearer than searching forums or government pages\n• Feedback favoured simple language, clear disclaimers, and obvious next steps over legal depth\n• Product changes: sharpened region selection, clarified emergency routes, and reframed monetisation around stressful 'premium moments'", { fill: palette.surfaceAlt });
   addPanel(
     slide,
     0.72,
@@ -425,18 +426,18 @@ export async function generateRenterShieldPitchDeck(outputPath = DEFAULT_PITCH_D
 
   slide = pptx.addSlide();
   addSlideChrome(slide, 11);
-  addHeadline(slide, "Impact & Scalability", "Start with renter confidence and prevent avoidable losses, then scale through repeatable issue playbooks.");
+  addHeadline(slide, "Impact & Scalability", "Start with renter confidence and prevent avoidable losses, then scale through repeatable issue playbooks and partner distribution.");
   addPanel(slide, 0.72, 2.08, 3.9, 2.35, "Immediate impact", "Helps renters understand what to do next faster, especially in issues involving deposits, repairs, eviction pressure, or unsafe conditions.");
-  addPanel(slide, 4.72, 2.08, 3.9, 2.35, "Scalable model", "Expand issue coverage, improve trust signals, and add workflow tools that keep users engaged through a dispute lifecycle.");
-  addPanel(slide, 8.72, 2.08, 3.9, 2.35, "Long-term vision", "Become the default self-serve platform for renter rights: practical guidance, outcome tracking, and eventually a trusted consumer legal brand.");
+  addPanel(slide, 4.72, 2.08, 3.9, 2.35, "Scalable model", "Expand issue coverage, reuse legal playbooks across regions, and add workflow tools that keep users engaged through a dispute lifecycle.");
+  addPanel(slide, 8.72, 2.08, 3.9, 2.35, "Long-term vision", "Become the default self-serve platform for renter rights: practical guidance, outcome tracking, and a trusted consumer legal brand with institutional distribution.");
   addPanel(
     slide,
     0.72,
     4.8,
     11.9,
     1.05,
-    "Feedback incorporated",
-    "Unsupported claims have been removed. The slide now focuses on believable outcomes: faster action, higher confidence, broader issue coverage, and scalable product economics.",
+    "Scale mechanics",
+    "Scalability comes from repeatable issue journeys, searchable acquisition, reusable legal templates, and institutional pilots that can onboard groups of renters efficiently.",
     { fill: palette.surfaceAlt }
   );
 
@@ -445,7 +446,7 @@ export async function generateRenterShieldPitchDeck(outputPath = DEFAULT_PITCH_D
   addHeadline(slide, "Next Steps", "The next 30 days should generate evidence, trust, and a clearer path to distribution.");
   addPanel(slide, 0.72, 2.08, 3.9, 2.45, "1. Run better validation", "Test the prototype with 10–15 renters, capture quotes and objections, and learn which issue journeys create the most trust and urgency.");
   addPanel(slide, 4.72, 2.08, 3.9, 2.45, "2. Expand high-value flows", "Add the next 5 priority issue types and improve trust markers such as disclaimers, source references, and better letter outputs.");
-  addPanel(slide, 8.72, 2.08, 3.9, 2.45, "3. Start credibility conversations", "Open pilot discussions with housing support organisations and begin legal review of core templates before scaling claims.");
+  addPanel(slide, 8.72, 2.08, 3.9, 2.45, "3. Start credibility conversations", "Open pilot discussions with housing support organisations and begin legal review of core templates before scaling claims."}
   addPanel(slide, 0.72, 4.9, 11.9, 0.92, "Contact", "mason.work.mmp@gmail.com  •  linkedin.com/in/mason-preece-a985593b3", { fill: palette.surfaceAlt });
 
   const absoluteOutputPath = resolve(process.cwd(), outputPath);
