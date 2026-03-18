@@ -1,0 +1,2 @@
+REVOKE EXECUTE ON FUNCTION public.check_legal_chat_rate_limit(text, integer, integer) FROM PUBLIC, anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.check_legal_chat_rate_limit(text, integer, integer) TO service_role;
