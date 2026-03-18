@@ -8,6 +8,7 @@ import Index from "./pages/Index.tsx";
 import IssuePage from "./pages/IssuePage.tsx";
 import RightsPage from "./pages/RightsPage.tsx";
 import EmergencyPage from "./pages/EmergencyPage.tsx";
+import ChatPage from "./pages/ChatPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/rights" element={<RightsPage />} />
             <Route path="/emergency" element={<EmergencyPage />} />
+            <Route path="/chat" element={<ChatPage />} />
             <Route path="/issue/:issueId" element={<IssuePage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

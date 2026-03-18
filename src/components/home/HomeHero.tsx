@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Shield, Phone, Scale, ArrowRight } from "lucide-react";
+import { Shield, Phone, Scale, ArrowRight, MessageSquareText } from "lucide-react";
 import { regionLabels, type Region } from "@/contexts/RegionContext";
 
 interface HomeHeroProps {
@@ -33,7 +33,7 @@ export function HomeHero({ region }: HomeHeroProps) {
           {[
             "Choose your issue and get guided answers in minutes",
             "See legal references and support routes for your region",
-            "Use template letters and emergency contacts when things escalate",
+            "Use template letters, AI guidance, and emergency contacts when things escalate",
           ].map((item) => (
             <div key={item} className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 p-4 text-sm leading-relaxed">
               {item}
@@ -48,6 +48,12 @@ export function HomeHero({ region }: HomeHeroProps) {
           >
             <ArrowRight size={16} /> Get help now
           </a>
+          <Link
+            to="/chat"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-primary-foreground text-primary font-semibold text-sm hover:opacity-90 transition-opacity"
+          >
+            <MessageSquareText size={16} /> Ask AI guide
+          </Link>
           <Link
             to="/rights"
             className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-primary-foreground/10 text-primary-foreground font-semibold text-sm hover:bg-primary-foreground/20 transition-colors border border-primary-foreground/20"
