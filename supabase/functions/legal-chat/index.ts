@@ -73,16 +73,21 @@ function needsUrgentEscalation(messages: Array<{ role: "user" | "assistant"; con
 }
 
 function getClientIp(req: Request) {
-  const forwardedFor = req.headers.get("x-forwarded-for");
-  if (forwardedFor) {
-    const firstIp = forwardedFor.split(",")[0]?.trim();
-    if (firstIp) return firstIp;
-  }
-
-  const fallbackHeaders = ["x-real-ip", "cf-connecting-ip"];
-  for (const header of fallbackHeaders) {
+  const trustedHeaders = ["cf-connecting-ip", "x-real-ip"];
+  for (const header of trustedHeaders) {
     const value = req.headers.get(header)?.trim();
     if (value) return value;
+  }
+
+  const forwardedFor = req.headers.get("x-forwarded-for");
+  if (forwardedFor) {
+    const forwardedIps = forwardedFor
+      .split(",")
+      .map((ip) => ip.trim())
+      .filter(Boolean);
+    const trustedIp = forwardedIps.at(-1);
+
+    if (trustedIp) return trustedIp;
   }
 
   return null;
