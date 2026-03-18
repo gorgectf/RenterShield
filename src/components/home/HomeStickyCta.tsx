@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, MessageSquareText } from "lucide-react";
 
 export function HomeStickyCta() {
   return (
@@ -12,10 +12,10 @@ export function HomeStickyCta() {
           <ArrowRight size={16} /> Get help
         </a>
         <Link
-          to="/emergency"
+          to="/chat"
           className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-card px-4 py-3 text-sm font-semibold text-foreground"
         >
-          <Phone size={16} /> Emergency
+          <MessageSquareText size={16} /> AI guide
         </Link>
       </div>
     </div>

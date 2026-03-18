@@ -13,6 +13,7 @@ import { HomeFaqSection } from "@/components/home/HomeFaqSection";
 import { HomeStickyCta } from "@/components/home/HomeStickyCta";
 import { HomeIssueGrid } from "@/components/home/HomeIssueGrid";
 import { SeoHead } from "@/components/SeoHead";
+import { HomeChatPromo } from "@/components/home/HomeChatPromo";
 
 const Index = () => {
   const { region } = useRegion();
@@ -90,7 +91,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <SeoHead
         title="RenterShield | UK renter rights guidance"
-        description="Free UK renter rights guidance with region-specific issue flows, emergency contacts, legal references, and practical next steps."
+        description="Free UK renter rights guidance with region-specific issue flows, emergency contacts, legal references, practical next steps, and an AI housing guide."
         canonicalPath="/"
       />
 
@@ -106,6 +107,9 @@ const Index = () => {
             </Link>
             <Link to="/emergency" className="hover:text-primary-foreground/80 transition-colors font-medium">
               Get Help Now
+            </Link>
+            <Link to="/chat" className="hover:text-primary-foreground/80 transition-colors font-medium">
+              AI Guide
             </Link>
           </div>
         </div>
@@ -129,6 +133,7 @@ const Index = () => {
           <RegionSelector />
         </div>
 
+        <HomeChatPromo />
         <HomeIssueGrid currentTrees={currentTrees} />
         <HomeTrustSection region={region} />
         <HomeHowItWorks />
@@ -149,6 +154,7 @@ const Index = () => {
               <div className="flex flex-col gap-2">
                 <Link to="/rights" className="text-muted-foreground hover:text-foreground transition-colors">Know Your Rights</Link>
                 <Link to="/emergency" className="text-muted-foreground hover:text-foreground transition-colors">Emergency Contacts</Link>
+                <Link to="/chat" className="text-muted-foreground hover:text-foreground transition-colors">AI Housing Guide</Link>
               </div>
             </div>
             <div>
