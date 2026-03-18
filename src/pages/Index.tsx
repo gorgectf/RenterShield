@@ -12,6 +12,7 @@ import { HomeHowItWorks } from "@/components/home/HomeHowItWorks";
 import { HomeFaqSection } from "@/components/home/HomeFaqSection";
 import { HomeStickyCta } from "@/components/home/HomeStickyCta";
 import { HomeIssueGrid } from "@/components/home/HomeIssueGrid";
+import { SeoHead } from "@/components/SeoHead";
 
 const Index = () => {
   const { region } = useRegion();
@@ -87,6 +88,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SeoHead
+        title="RenterShield | UK renter rights guidance"
+        description="Free UK renter rights guidance with region-specific issue flows, emergency contacts, legal references, and practical next steps."
+        canonicalPath="/"
+      />
+
       <nav className="bg-primary text-primary-foreground border-b border-primary/80">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-2">
