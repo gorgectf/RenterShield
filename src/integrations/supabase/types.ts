@@ -14,13 +14,47 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      legal_chat_rate_limits: {
+        Row: {
+          created_at: string
+          ip_hash: string
+          request_count: number
+          updated_at: string
+          window_started_at: string
+        }
+        Insert: {
+          created_at?: string
+          ip_hash: string
+          request_count?: number
+          updated_at?: string
+          window_started_at?: string
+        }
+        Update: {
+          created_at?: string
+          ip_hash?: string
+          request_count?: number
+          updated_at?: string
+          window_started_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      check_legal_chat_rate_limit: {
+        Args: {
+          p_ip_hash: string
+          p_max_requests?: number
+          p_window_seconds?: number
+        }
+        Returns: {
+          allowed: boolean
+          remaining: number
+          retry_after_seconds: number
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
