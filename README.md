@@ -46,7 +46,6 @@ Important notes:
 - **Chat usage is limited by Lovable’s monthly Cloud and AI allowance** for the workspace running this project.
 - There is **not a fixed number of chats or prompts** because cost depends on message length, conversation history, response length, and model usage.
 - If the monthly free allowance is exhausted, the chatbot may stop working until the allowance resets or the workspace is topped up.
-- Usage and charges can be monitored in **Settings → Cloud & AI balance**.
 
 ## Tech stack
 
