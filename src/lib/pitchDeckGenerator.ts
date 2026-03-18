@@ -446,7 +446,7 @@ export async function generateRenterShieldPitchDeck(outputPath = DEFAULT_PITCH_D
   addHeadline(slide, "Next Steps", "The next 30 days should generate evidence, trust, and a clearer path to distribution.");
   addPanel(slide, 0.72, 2.08, 3.9, 2.45, "1. Run better validation", "Test the prototype with 10–15 renters, capture quotes and objections, and learn which issue journeys create the most trust and urgency.");
   addPanel(slide, 4.72, 2.08, 3.9, 2.45, "2. Expand high-value flows", "Add the next 5 priority issue types and improve trust markers such as disclaimers, source references, and better letter outputs.");
-  addPanel(slide, 8.72, 2.08, 3.9, 2.45, "3. Start credibility conversations", "Open pilot discussions with housing support organisations and begin legal review of core templates before scaling claims."}
+  addPanel(slide, 8.72, 2.08, 3.9, 2.45, "3. Start credibility conversations", "Open pilot discussions with housing support organisations and begin legal review of core templates before scaling claims.");
   addPanel(slide, 0.72, 4.9, 11.9, 0.92, "Contact", "mason.work.mmp@gmail.com  •  linkedin.com/in/mason-preece-a985593b3", { fill: palette.surfaceAlt });
 
   const absoluteOutputPath = resolve(process.cwd(), outputPath);
